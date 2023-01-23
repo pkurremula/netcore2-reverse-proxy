@@ -136,6 +136,11 @@ namespace ReverseProxyApplication
             Uri targetUri = null;
             PathString remainingPath;
 
+            if (request.Path.StartsWithSegments("/hostapi", out remainingPath))
+            {
+                targetUri = new Uri("https://localhost:44325/WeatherForecast");
+            }
+
             if (request.Path.StartsWithSegments("/googleforms", out remainingPath))
             {
                 targetUri = new Uri("https://docs.google.com/forms" + remainingPath);
